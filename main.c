@@ -6,7 +6,11 @@ int main() {
 
   FILE* fp = fopen(filepath, "r");
 
-  createRecords(fp);
+  RouteRecord* routes = createRecords(fp);
+
+  int count = fillRecords(routes, fp);
+
+  printf("total count:  %d\n", count);
 
   return 0;
 }

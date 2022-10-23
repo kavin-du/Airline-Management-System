@@ -5,9 +5,9 @@
 
 
 typedef struct RouteRecord {
-  char origin[3];
-  char dest[3];
-  char air_code[2];
+  char origin[4];
+  char dest[4];
+  char air_code[3];
   int passenger_count[6];
 } RouteRecord;
 
