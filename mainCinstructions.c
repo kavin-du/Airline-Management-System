@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
     exit(0);
   }
 
-  filepath = argv[1];
+  filepath = argv[1]; // get the filepath from command line arguments
 
 
   /* 3. Attempt to open the file. Print out Opening <filename>... before you call fopen(). */

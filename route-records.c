@@ -52,8 +52,6 @@ int fillRecords(RouteRecord* r, FILE* fileIn) {
       value = strtok(NULL, ",");
     }
 
-    // printf("%s %s %s\n", line[0], line[1], line[2]);
-
     int month = atoi(line[0]);
     const char* origin = line[1];
     const char* dest = line[2];
@@ -96,6 +94,7 @@ int findAirlineRoute(
         return curIdx; // record found
     }
 
+    // recursively find the next record
     return findAirlineRoute(r, length, origin, destination, airline, ++curIdx);
 };
 
