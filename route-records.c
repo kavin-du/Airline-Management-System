@@ -99,6 +99,122 @@ int findAirlineRoute(
     return findAirlineRoute(r, length, origin, destination, airline, ++curIdx);
 };
 
-void searchRecords(RouteRecord* r, int length, const char*key1, const char* key2, SearchType st);
+// helper function for printing statistics
+void printStatistics(int matches, int total, int m1, int m2, int m3, int m4, int m5, int m6) {
+  printf("\n%d matches were found.\n\n", matches);
 
-void printMenu();
+  printf("Statistics\n");
+  printf("Total Passengers: \t%d\n", total);
+
+  printf("Total Passengers in Month 1: \t%d\n", m1);
+  printf("Total Passengers in Month 2: \t%d\n", m2);
+  printf("Total Passengers in Month 3: \t%d\n", m3);
+  printf("Total Passengers in Month 4: \t%d\n", m4);
+  printf("Total Passengers in Month 5: \t%d\n", m5);
+  printf("Total Passengers in Month 6: \t%d\n\n", m6);
+
+  printf("Average Passengers per Month: \t%d\n", (int)(total/6));
+}
+
+void searchRecords(RouteRecord* r, int length, const char*key1, const char* key2, SearchType st) {
+  int total = 0, matches = 0, m1 = 0, m2 = 0, m3 = 0, m4 = 0, m5 = 0, m6 = 0;
+
+  if(st == ORIGIN) {
+    printf("Searching by origin...\n");
+    for(int i=0; i < length; i++) {
+      if(strcmp(r[i].origin, key1) == 0) {
+        matches++;
+
+        // count in each month
+        m1 += r[i].passenger_count[0];
+        m2 += r[i].passenger_count[1];
+        m3 += r[i].passenger_count[2];
+        m4 += r[i].passenger_count[3];
+        m5 += r[i].passenger_count[4];
+        m6 += r[i].passenger_count[5];
+
+        printf("%s (%s-%s) ", r[i].air_code, r[i].origin, r[i].dest);
+      }
+    }
+
+    total = m1 + m2 + m3 + m4 + m5 + m6;
+    // print statistics
+    printStatistics(matches, total, m1, m2, m3, m4, m5, m6);
+
+  } else if(st == DESTINATION) {
+    printf("Searching by destination...\n");
+    for(int i=0; i < length; i++) {
+      if(strcmp(r[i].dest, key1) == 0) {
+        matches++;
+
+        // count in each month
+        m1 += r[i].passenger_count[0];
+        m2 += r[i].passenger_count[1];
+        m3 += r[i].passenger_count[2];
+        m4 += r[i].passenger_count[3];
+        m5 += r[i].passenger_count[4];
+        m6 += r[i].passenger_count[5];
+
+        printf("%s (%s-%s) ", r[i].air_code, r[i].origin, r[i].dest);
+      }
+    }
+
+    total = m1 + m2 + m3 + m4 + m5 + m6;
+    // print statistics
+    printStatistics(matches, total, m1, m2, m3, m4, m5, m6);
+
+  } else if(st == AIRLINE) {
+    printf("Searching by airline...\n");
+    for(int i=0; i < length; i++) {
+      if(strcmp(r[i].air_code, key1) == 0) {
+        matches++;
+
+        // count in each month
+        m1 += r[i].passenger_count[0];
+        m2 += r[i].passenger_count[1];
+        m3 += r[i].passenger_count[2];
+        m4 += r[i].passenger_count[3];
+        m5 += r[i].passenger_count[4];
+        m6 += r[i].passenger_count[5];
+
+        printf("%s (%s-%s) ", r[i].air_code, r[i].origin, r[i].dest);
+      }
+    }
+
+    total = m1 + m2 + m3 + m4 + m5 + m6;
+    // print statistics
+    printStatistics(matches, total, m1, m2, m3, m4, m5, m6);
+
+  } else if(st == ROUTE) {
+    printf("Searching by route...\n");
+    for(int i=0; i < length; i++) {
+      if(strcmp(r[i].origin, key1) == 0 && strcmp(r[i].dest, key2) == 0) {
+        matches++;
+
+        // count in each month
+        m1 += r[i].passenger_count[0];
+        m2 += r[i].passenger_count[1];
+        m3 += r[i].passenger_count[2];
+        m4 += r[i].passenger_count[3];
+        m5 += r[i].passenger_count[4];
+        m6 += r[i].passenger_count[5];
+
+        printf("%s (%s-%s) ", r[i].air_code, r[i].origin, r[i].dest);
+      }
+    }
+
+    total = m1 + m2 + m3 + m4 + m5 + m6;
+    // print statistics
+    printStatistics(matches, total, m1, m2, m3, m4, m5, m6);
+  }
+};
+
+void printMenu() {
+  printf( "\n\n######### Airline Route Records Database MENU #########\n" );
+  printf( "1. Search by Route\n" );
+  printf( "2. Search by Origin Airport\n" );
+  printf( "3. Search by Destination Airport\n" );
+  printf( "4. Search by Airline\n" );
+  printf( "5. Quit\n" );
+  printf( "Enter your selection: " );
+};

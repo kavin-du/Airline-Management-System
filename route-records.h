@@ -12,10 +12,10 @@ typedef struct RouteRecord {
 } RouteRecord;
 
 typedef enum SearchType { 
-  ROUTE, 
-  ORIGIN, 
-  DESTINATION,
-  AIRLINE 
+  ROUTE = 1, 
+  ORIGIN = 2, 
+  DESTINATION = 3,
+  AIRLINE = 4 
 } SearchType;
 
 // function definitions
@@ -26,7 +26,7 @@ int fillRecords(RouteRecord*, FILE*);
 
 int findAirlineRoute(RouteRecord*, int, const char*, const char*, const char*, int);
 
-void searchRecords(RouteRecord* r, int, const char*, const char*, SearchType);
+void searchRecords(RouteRecord*, int, const char*, const char*, SearchType);
 
 void printMenu(void);
 
