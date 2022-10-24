@@ -137,10 +137,6 @@ void searchRecords(RouteRecord* r, int length, const char*key1, const char* key2
       }
     }
 
-    total = m1 + m2 + m3 + m4 + m5 + m6;
-    // print statistics
-    printStatistics(matches, total, m1, m2, m3, m4, m5, m6);
-
   } else if(st == DESTINATION) {
     printf("Searching by destination...\n");
     for(int i=0; i < length; i++) {
@@ -159,10 +155,6 @@ void searchRecords(RouteRecord* r, int length, const char*key1, const char* key2
       }
     }
 
-    total = m1 + m2 + m3 + m4 + m5 + m6;
-    // print statistics
-    printStatistics(matches, total, m1, m2, m3, m4, m5, m6);
-
   } else if(st == AIRLINE) {
     printf("Searching by airline...\n");
     for(int i=0; i < length; i++) {
@@ -180,11 +172,7 @@ void searchRecords(RouteRecord* r, int length, const char*key1, const char* key2
         printf("%s (%s-%s) ", r[i].air_code, r[i].origin, r[i].dest);
       }
     }
-
-    total = m1 + m2 + m3 + m4 + m5 + m6;
-    // print statistics
-    printStatistics(matches, total, m1, m2, m3, m4, m5, m6);
-
+    
   } else if(st == ROUTE) {
     printf("Searching by route...\n");
     for(int i=0; i < length; i++) {
@@ -202,11 +190,14 @@ void searchRecords(RouteRecord* r, int length, const char*key1, const char* key2
         printf("%s (%s-%s) ", r[i].air_code, r[i].origin, r[i].dest);
       }
     }
-
-    total = m1 + m2 + m3 + m4 + m5 + m6;
-    // print statistics
-    printStatistics(matches, total, m1, m2, m3, m4, m5, m6);
   }
+
+  total = m1 + m2 + m3 + m4 + m5 + m6;
+  // print statistics
+  if(matches == 0) 
+      printf("No matches found!\n"); 
+    else
+      printStatistics(matches, total, m1, m2, m3, m4, m5, m6);
 };
 
 void printMenu() {
