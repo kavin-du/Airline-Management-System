@@ -7,9 +7,19 @@
 int main(int argc, char *argv[])
 {
   /* 1. Declare variables here */
-  char *filepath = "data.csv";
+  char *filepath;
 
   /* 2. Check command line arguments here. If a command line argument (for the file name) is missing, print out the following: ERROR: Missing file name and end the program */
+  if(argc < 2) {
+    printf("ERROR: Missing file name\n");
+    exit(0);
+  } else if (argc > 2) {
+    printf("Too many arguments supplied, only need the file name\n");
+    exit(0);
+  }
+
+  filepath = argv[1];
+
 
   /* 3. Attempt to open the file. Print out Opening <filename>... before you call fopen(). */
   printf("Opening %s...\n", filepath);
